@@ -1,0 +1,39 @@
+.main-footer {
+  position: fixed;
+  bottom: 0rem;
+  background-color: var(--tertiary-color);
+  width: 100%;
+  border-radius: 2rem 2rem 0 0;
+  z-index: 3;
+}
+
+.main-footer-nav {
+  display: flex;
+  padding: 2rem 2rem 1.5rem 2rem;
+  justify-content: space-around;
+}
+
+.footer-icons-container {
+  text-decoration: none;
+  color: var(--pink-color);
+  text-align: center;
+  width: 9rem;
+  height: 4rem;
+  padding: .5rem;
+  font-weight: bold;
+}
+
+.footer-icons {
+  font-size: 2rem;
+}
+
+.footer-icons-container p {
+  font-size: 1.2rem;
+}
+
+.footer-icons-container:focus {
+  background-color: var(--primary-color);
+  border-radius: 10rem;
+  box-shadow: 0 0 .7rem .1rem var(--primary-color);
+  color: black;
+}

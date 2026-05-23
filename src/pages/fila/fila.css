@@ -1,0 +1,61 @@
+.fila-container-cards {
+  margin-top: 5rem;
+  margin-bottom: 18rem;
+}
+
+.fila-cards {
+  margin-bottom: 1.5rem;
+  background-color: var(--tertiary-color);
+  border-radius: 2rem;
+  padding: 1rem 3.3rem 1.3rem 3.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+}
+
+.fila-container-informations {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.fila-position {
+  display: flex;
+  align-items: center;
+}
+
+.fila-position h2 {
+  background-color: var(--secondary-color);
+  border-radius: 100%;
+  color: var(--neutral-color);
+  font-size: 2.5rem;
+  padding: 1.3rem;
+  border: solid 1px var(--neutral-color);
+}
+
+.fila-informations {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.fila-informations h3 {
+  color: var(--neutral-color);
+  font-size: 2rem;
+}
+
+.fila-informations p {
+  color: var(--pink-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.fila-informations p {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+

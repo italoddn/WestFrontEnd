@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rye&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --font-logo: "Rye", serif;
+    --primary-color: #FF5C00;
+    --secondary-color: #1A1A1A;
+    --tertiary-color: #2D2D2D;
+    --gray-color: #CFCFCF;
+    --neutral-color: #FFFFFF;
+    --pink-color: #EBADAD;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    background-color: var(--secondary-color);
+    font-size: 62.5%;
+}
+
+.default-button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.7rem;
+}

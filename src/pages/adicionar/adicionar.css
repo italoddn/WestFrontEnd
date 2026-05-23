@@ -1,0 +1,81 @@
+.adicionar-container {
+  position: absolute;
+  top: .01rem;
+  left: .01rem;
+  width: 100%;
+  height: 100%;
+  background-color: color-mix(in srgb, var(--tertiary-color) 60%, transparent);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.adicionar-inputs-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 0 2.5rem;
+}
+
+.adicionar-inputsLabel-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.adicionar-inputsLabel-container label {
+  color: var(--neutral-color);
+  font-size: 2rem;
+}
+
+.adicionar-inputContainer {
+  background-color: var(--tertiary-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adicionar-inputContainer input {
+  border: none;
+  flex: 1;
+  background-color: transparent;
+  font-size: 1.8rem;
+  height: 100%;
+  color: var(--pink-color);
+  font-weight: bold;
+}
+
+#accents {
+  text-align: center;
+}
+
+.adicionar-inputContainer span {
+  color: var(--pink-color);
+  font-size: 1.8rem;
+}
+
+.adicionar-inputs-container button {
+  padding: 1.5rem;
+}
+
+#adicionar-plusLess {
+  font-size: 3rem;
+  padding: .2rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+  border: none;
+  outline: none;
+}

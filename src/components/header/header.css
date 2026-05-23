@@ -1,0 +1,69 @@
+.main-header {
+    
+}
+
+.main-header-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 0;
+}
+
+.main-header-title {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    font-family: var(--font-logo);
+    text-align: center;
+    flex: 1;
+}
+
+.main-header-userIcon {
+    color: var(--primary-color);
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.main-header-sliderContainer {
+    background-color: var(--tertiary-color);
+    padding: 2rem 4rem 2rem 5rem;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.main-header-sliderContainer a {
+    color: var(--pink-color);
+    font-weight: bold;
+    font-size: 2.8rem;
+    text-align: center;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.main-header-sliderFila.active {
+    color: black;
+    pointer-events: none;
+}
+
+.main-header-sliderHistorico.active {
+    color: black;
+    pointer-events: none;
+}
+
+.main-header-slider {
+    position: absolute;
+    background-color: var(--gray-color);
+    width: 50%;
+    height: 100%;
+    left: .1rem;
+    top: .1rem;
+    border-radius: 3rem;
+    transition: all ease .5s;
+}
+
+.main-header-slider.active {
+    left: calc(100% / 2 )
+}
+
+
