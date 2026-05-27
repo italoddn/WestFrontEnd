@@ -1,16 +1,12 @@
+import { Link, useLocation} from 'react-router-dom';
+
 import { FaRegUserCircle } from "react-icons/fa";
-import { useState } from 'react'
 
 import "./header.css";
-import { Link } from 'react-router-dom';
 
 function Header() {
 
-  const [active, setActive] = useState(false);
-
-  function handleClik() {
-    setActive(prev => !prev);
-  }
+  const url = useLocation().pathname
 
   return (
     <header className="main-header">
@@ -20,9 +16,9 @@ function Header() {
       </nav>
 
       <div className="main-header-sliderContainer">
-        <Link onClick={handleClik} to='/' className={`main-header-sliderFila ${active ? '' : 'active'}`}>Fila</Link>
-        <Link onClick={handleClik} to='/historico' className={`main-header-sliderHistorico ${active ? 'active' : ''}`}>Histórico</Link>
-        <div className={`main-header-slider ${active ? 'active' : ''}`}></div>
+        <Link to='/' className={`main-header-sliderFila ${url === '/' ? 'active' : ''}`}>Fila</Link>
+        <Link to='/historico' className={`main-header-sliderHistorico ${url === '/historico' ? 'active': ''}`}>Histórico</Link>
+        <div className={`main-header-slider ${url === '/historico' ? 'active': ''}`}></div>
       </div>
     </header>
   );

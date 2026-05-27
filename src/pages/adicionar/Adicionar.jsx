@@ -1,6 +1,8 @@
-import { FaRegUser, FaPhone } from "react-icons/fa";
 import { toast } from 'react-toastify';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+
+import { FaRegUser, FaPhone } from "react-icons/fa";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import api from '../../services/api/api.js'
 
@@ -8,7 +10,9 @@ import './adicionar.css'
 
 function Adicionar({setCustumers}) {
 
+  const tooken = localStorage.getItem('tooken');
   const inputNumberRef = useRef();
+  const [loading, setLoading] = useState(false);
 
   function handleAccents(e) {
     if (e.target.innerText === '-') {
@@ -32,6 +36,7 @@ function Adicionar({setCustumers}) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     if (e.target[0].value < 3) {
       toast.error('Nome deve ter pelo menos 3 Caracteres')
       return
@@ -48,11 +53,21 @@ function Adicionar({setCustumers}) {
     }
 
     try {
+      e.target[3].classList.add('loading');
+      setLoading(true);
+
       const response = await api.post('/', {
         name: e.target[0].value,
         accents: e.target[1].value,
         phoneNumber: e.target[2].value,
+      },{
+        headers: {
+          Authorization: `Bearer ${tooken}`
+        }
       })
+      
+      e.target[3].classList.remove('loading');
+      setLoading(false);
 
       if(response) toast.success('Cliente cadastrado');
 
@@ -60,7 +75,11 @@ function Adicionar({setCustumers}) {
       e.target[1].value = '1';
       e.target[2].value = '';
 
-      const list = await api.get('/');
+      const list = await api.get('/',{
+        headers: {
+          Authorization: `Bearer ${tooken}`
+        }
+      });
       setCustumers(list.data);
 
       
@@ -102,7 +121,7 @@ function Adicionar({setCustumers}) {
           </div>
         </div>
 
-        <button type='submit' className='default-button'>Adicionar</button>
+        <button type='submit' className='default-button'>{loading ? <AiOutlineLoading3Quarters className='loading-icon'/> : 'Adicionar'}</button>
       </div>
     </form>
   )

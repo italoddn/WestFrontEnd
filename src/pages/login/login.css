@@ -1,0 +1,30 @@
+.login-form {
+    display: flex;
+    margin-top: 2rem;
+    flex-direction: column;
+    background-color: var(--tertiary-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    gap: 2rem;
+}
+
+.login-container-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    color: var(--neutral-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: .8rem;
+}
+
+.login-form input {
+    color: black;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background-color: var(--gray-color);
+    padding: .5rem;
+    border-radius: 1rem;
+}

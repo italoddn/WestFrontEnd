@@ -79,3 +79,22 @@ input {
   border: none;
   outline: none;
 }
+
+.adicionar-container .default-button.loading {
+  pointer-events: none;
+}
+
+.loading-icon {
+  animation: spin 1s linear infinite;
+  font-weight: bold;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

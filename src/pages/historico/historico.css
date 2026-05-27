@@ -1,0 +1,95 @@
+.historico-container {
+  margin-top: 5rem;
+  margin-bottom: 18rem;
+}
+
+.historico-card {
+  padding: 0 2.3rem 1rem 2.3rem;
+  background-color: var(--tertiary-color);
+  padding: 1rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  
+}
+
+.historico-container-informations {
+  display: flex;
+  gap: 2rem;
+}
+
+.historico-position {
+  display: flex;
+  align-items: center;
+}
+
+.historico-position h2 {
+  background-color: var(--secondary-color);
+  border-radius: 100%;
+  color: var(--neutral-color);
+  font-size: 2.5rem;
+  padding: 1.3rem;
+  border: solid 1px var(--neutral-color);
+}
+
+.historico-informations {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.historico-informations h3 {
+  color: var(--neutral-color);
+  font-size: 2rem;
+}
+
+.historico-informations p {
+  color: var(--pink-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.historico-informations p {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.historico-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.historico-stats p{
+  padding: .5rem;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+.historico-stats p.finalizado {
+  background-color: #dcfce7;
+  color: #166534;
+  border: #166534 solid .1rem;
+}
+
+.historico-stats p.cancelado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.historico-date {
+  color: var(--gray-color);
+  display: flex;
+  gap: .5rem;
+}
+
+.historico-date span {
+  display: flex;
+  align-items: end;
+}

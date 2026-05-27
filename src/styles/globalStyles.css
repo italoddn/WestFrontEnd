@@ -26,4 +26,6 @@ html {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.7rem;
+  color: black;
+  cursor: pointer;
 }

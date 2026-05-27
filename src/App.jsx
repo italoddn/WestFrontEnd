@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {ToastContainer} from 'react-toastify'
 
@@ -12,13 +11,17 @@ import Footer from './components/footer/Footer';
 import './app.css'
 
 function App() {
-
   const [custumers, setCustumers] = useState([]);
+  const tooken = localStorage.getItem("tooken");
 
   useEffect(() => {
     async function getData() {
       try {
-        const response = await api.get('/');
+        const response = await api.get('/', {
+          headers:{
+            Authorization: `Bearer ${tooken}`
+          }
+        });
         setCustumers(response.data)
       } catch (e) {
         console.log(e)
@@ -29,15 +32,14 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <>
       <div className="container">
         <Header />
         <MyRoutes customers= {custumers} setCustumers={setCustumers}/>
       </div>
-      
       <Footer />
       <ToastContainer />
-    </BrowserRouter>
+    </>
   );
 }
 

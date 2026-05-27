@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './footer.css'
 
 function Footer() {
+
   return(
     <footer className='main-footer'>
       <nav className='main-footer-nav'>
@@ -13,7 +14,7 @@ function Footer() {
           <span className='footer-icons'><FaUserFriends /></span>
           <p>Fila</p>
         </Link>
-        <Link className='footer-icons-container'>
+        <Link to='/historico' className='footer-icons-container'>
           <span className='footer-icons'><FaHistory /></span>
           <p>Historico</p>
         </Link>

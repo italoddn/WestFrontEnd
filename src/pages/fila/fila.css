@@ -3,21 +3,88 @@
   margin-bottom: 18rem;
 }
 
-.fila-cards {
+.fila-cards-container {
   margin-bottom: 1.5rem;
   background-color: var(--tertiary-color);
   border-radius: 2rem;
-  padding: 1rem 3.3rem 1.3rem 3.3rem;
+  padding: 1rem;
+}
+
+.fila-cards {
+  padding: 0 1.5rem 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
 
+.fila-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.fila-header p {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: 1.2rem;
+  color: var(--gray-color);  
+}
+
+
+.fila-header button {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: var(--gray-color);
+}
+
+.fila-header-menu {
+  position: absolute;
+  right: 0.7rem;
+  top: 2rem;
+  background-color: var(--gray-color);
+  width: 10rem;
+  border-radius: .5rem .5rem .5rem .5rem;
+  transform-origin: top;
+  transform: scaley(0);
+  transition: transform ease .2s;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fila-header-menu li:not(:last-child) {
+  border-bottom: solid 1px var(--tertiary-color);
+}
+
+.fila-header-menu li button{
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: .5rem 0;
+  cursor: pointer;
+  transition: all ease .2s;
+}
+
+.fila-header-menu li button:hover {
+  background-color: color-mix(in srgb, var(--gray-color) 70%, black 30%);
+}
+
+.fila-header-menu.active {
+  transform: scaley(1);
+  display: block;
+  pointer-events: all;
 }
 
 .fila-container-informations {
   display: flex;
   gap: 2rem;
-  padding: 1rem 0;
 }
 
 .fila-position {
@@ -58,4 +125,3 @@
   align-items: center;
   gap: .5rem;
 }
-
