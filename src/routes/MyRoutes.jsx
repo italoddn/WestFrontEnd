@@ -4,7 +4,7 @@ import Fila from '../pages/fila/Fila'
 import Adicionar from '../pages/adicionar/Adicionar';
 import Historico from '../pages/historico/Historico';
 import Login from '../pages/login/Login';
-import PrivateRoute from './privateRoute';
+import PrivateRoute from './PrivateRoute';
 
 function MyRoutes({customers, setCustumers}) {
   return (
