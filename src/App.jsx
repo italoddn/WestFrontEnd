@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import {ToastContainer} from 'react-toastify'
+import {toast, ToastContainer} from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 
 import api from './services/api/api.js'
 
@@ -13,6 +14,7 @@ import './app.css'
 function App() {
   const [custumers, setCustumers] = useState([]);
   const tooken = localStorage.getItem("tooken");
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getData() {
@@ -24,7 +26,10 @@ function App() {
         });
         setCustumers(response.data)
       } catch (e) {
-        console.log(e)
+        if(e.status === 401) {
+          toast.error('Faça login');
+          navigate('/login');
+        }
       }
     }
 

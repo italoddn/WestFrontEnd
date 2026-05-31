@@ -23,7 +23,8 @@ function Fila({ customers, setCustumers }) {
     return () => clearInterval(interval);
   }, []);
 
-  async function handleClick(custumer) {
+  async function handleClick(e, custumer) {
+    const awaitingTime = e.target.parentElement.parentElement.childNodes[0].firstChild.innerText;
     const confirmation = confirm("Deseja chamar o cliente? ");
     if (!confirmation) return;
 
@@ -54,6 +55,7 @@ function Fila({ customers, setCustumers }) {
           accents,
           phoneNumber,
           stats: "Chamado!",
+          timeInLine: awaitingTime
         },
         {
           headers: {
@@ -86,7 +88,8 @@ function Fila({ customers, setCustumers }) {
   function getWaitingTime(time) {
     const dateNow = new Date().getTime();
     const dbTime = new Date(time).getTime();
-    const diff = dateNow - dbTime;
+
+    const diff = Math.max(0, dateNow - dbTime);
 
     const hours = Math.floor(diff / 1000 / 60 / 60);
     const minutes = Math.floor(diff / 1000 / 60) % 60;
@@ -104,7 +107,8 @@ function Fila({ customers, setCustumers }) {
     setActiveMenu((prev) => (prev === id ? null : id));
   }
 
-  async function deleteCustomer(custumer) {
+  async function deleteCustomer(e, custumer) {
+    const awatingTime = e.target.parentElement.parentElement.parentElement.children[0].innerText
     const { _id, name, accents, phoneNumber } = custumer;
     const confirmation = confirm(`Deseja excluir ${name} ?`);
     if (!confirmation) return;
@@ -117,6 +121,7 @@ function Fila({ customers, setCustumers }) {
           accents,
           phoneNumber,
           stats: "Cancelado!",
+          timeInLine: awatingTime
         },
         {
           headers: {
@@ -149,25 +154,19 @@ function Fila({ customers, setCustumers }) {
       {customers.map((custumer, index) => (
         <article className="fila-cards-container" key={custumer._id}>
           <div className="fila-header">
-            <p>
-              <span>
-                <FaRegClock />
-              </span>{" "}
-              {getWaitingTime(custumer.createdAt)}
-            </p>
+            <p><span><FaRegClock /></span>{getWaitingTime(custumer.createdAt)}</p>
             <button onClick={() => handleMenu(custumer._id)}>
               <FaBars />
             </button>
 
             <ul
-              className={`fila-header-menu ${
-                activeMenu === custumer._id ? "active" : ""
-              }`}
+              className={`fila-header-menu ${activeMenu === custumer._id ? "active" : ""
+                }`}
             >
               <li>
                 <button
-                  onClick={() => {
-                    deleteCustomer(custumer);
+                  onClick={(e) => {
+                    deleteCustomer(e, custumer);
                   }}
                 >
                   Excluir
@@ -200,8 +199,8 @@ function Fila({ customers, setCustumers }) {
             </div>
 
             <button
-              onClick={() => {
-                handleClick(custumer);
+              onClick={(e) => {
+                handleClick(e, custumer);
               }}
               className="default-button"
             >

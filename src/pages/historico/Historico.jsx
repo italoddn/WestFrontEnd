@@ -16,12 +16,19 @@ function Historico() {
 
   useEffect(() => {
     async function getData() {
-      const response = await api.get('/history', {
-        headers: {
-          Authorization: `Bearer ${tooken}`
+
+      try {
+        const response = await api.get('/history', {
+          headers: {
+            Authorization: `Bearer ${tooken}`
+          }
+        });
+        setCustumers(response.data);
+      } catch (e) {
+        if(e.status === 401) {
+          return
         }
-      });
-      setCustumers(response.data);
+      }
     }
 
     getData();
@@ -49,8 +56,9 @@ function Historico() {
               </div>
 
               <div className='historico-stats'>
-                <p className={`${customer.stats === 'Chamado!' ? 'finalizado': 'cancelado'}`}>{customer.stats}</p>
-                <p className='historico-date'><span><FaRegClock /></span>{formatedDate(customer.createdAt)}</p>
+                <p className={`${customer.stats === 'Chamado!' ? 'finalizado' : 'cancelado'}`}>{customer.stats}</p>
+                <p className='historico-date'>Tempo de espera <span><FaRegClock /></span>{customer.timeInLine}</p>
+                <p className='historico-date'>Chamado ás <span><FaRegClock /></span>{formatedDate(customer.createdAt)}</p>
               </div>
             </div>
           </div>
