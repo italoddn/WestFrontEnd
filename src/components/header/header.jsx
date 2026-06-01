@@ -1,4 +1,4 @@
-import { Link, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 
 import { FaRegUserCircle } from "react-icons/fa";
 
@@ -16,8 +16,8 @@ function Header() {
       </nav>
 
       <div className="main-header-sliderContainer">
-        <Link to='/' className={`main-header-sliderFila ${url === '/' ? 'active' : ''}`}>Fila</Link>
-        <Link to='/historico' className={`main-header-sliderHistorico ${url === '/historico' ? 'active': ''}`}>Histórico</Link>
+        <a href='/' className={`main-header-sliderFila ${url === '/' ? 'active' : ''}`}>Fila</a>
+        <a href='/historico' className={`main-header-sliderHistorico ${url === '/historico' ? 'active': ''}`}>Histórico</a>
         <div className={`main-header-slider ${url === '/historico' ? 'active': ''}`}></div>
       </div>
     </header>
