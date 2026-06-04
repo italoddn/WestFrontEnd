@@ -16,11 +16,49 @@
     flex: 1;
 }
 
+.main-header-login-container {
+    position: relative;
+}
+
 .main-header-userIcon {
     color: var(--primary-color);
     font-size: 3rem;
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+
+.main-header-loginMenu {
+    background-color: var(--gray-color);
+    position: relative;
+    top: 0.001rem;
+    right: 50%;
+    border-radius: .5rem;
+    transform-origin: top;
+    transform: scaleY(0);
+    pointer-events: none;
+    transition: all .2s ease-in;
+}
+
+.main-header-loginMenu.active {
+    transform: scaleX(1);
+    pointer-events: all;
+}
+
+.main-header-loginMenu li {
+    font-size: 1.5rem;
+    padding: .8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-header-loginMenu li:not(:last-child) {
+    border-bottom: solid .1rem var(--tertiary-color);
+}
+
+.main-header-loginMenu li a {
+    text-decoration: none;
+    color: black;
 }
 
 .main-header-sliderContainer {

@@ -57,7 +57,7 @@ function Historico() {
 
               <div className='historico-stats'>
                 <p className={`${customer.stats === 'Chamado!' ? 'finalizado' : 'cancelado'}`}>{customer.stats}</p>
-                <p className='historico-date'>Tempo de espera <span><FaRegClock /></span>{customer.timeInLine}</p>
+                <p className='historico-date'>T de espera <span><FaRegClock /></span>{customer.timeInLine}</p>
                 <p className='historico-date'>Chamado ás <span><FaRegClock /></span>{formatedDate(customer.createdAt)}</p>
               </div>
             </div>

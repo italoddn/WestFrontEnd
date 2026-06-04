@@ -23,8 +23,7 @@ function Fila({ customers, setCustumers }) {
     return () => clearInterval(interval);
   }, []);
 
-  async function handleClick(e, custumer) {
-    const awaitingTime = e.target.parentElement.parentElement.childNodes[0].firstChild.innerText;
+  async function handleClick(custumer, awaitingTime) {
     const confirmation = confirm("Deseja chamar o cliente? ");
     if (!confirmation) return;
 
@@ -107,8 +106,7 @@ function Fila({ customers, setCustumers }) {
     setActiveMenu((prev) => (prev === id ? null : id));
   }
 
-  async function deleteCustomer(e, custumer) {
-    const awatingTime = e.target.parentElement.parentElement.parentElement.children[0].innerText
+  async function deleteCustomer(awatingTime, custumer) {
     const { _id, name, accents, phoneNumber } = custumer;
     const confirmation = confirm(`Deseja excluir ${name} ?`);
     if (!confirmation) return;
@@ -165,8 +163,8 @@ function Fila({ customers, setCustumers }) {
             >
               <li>
                 <button
-                  onClick={(e) => {
-                    deleteCustomer(e, custumer);
+                  onClick={() => {
+                    deleteCustomer(getWaitingTime(custumer.createdAt), custumer);
                   }}
                 >
                   Excluir
@@ -199,8 +197,8 @@ function Fila({ customers, setCustumers }) {
             </div>
 
             <button
-              onClick={(e) => {
-                handleClick(e, custumer);
+              onClick={() => {
+                handleClick(custumer, getWaitingTime(custumer.createdAt));
               }}
               className="default-button"
             >
