@@ -6,6 +6,8 @@
 .historico-container-button-container {
   display: flex;
   justify-content: end;
+  color: black;
+  font-weight: bold;
 }
 
 .historico-container-button-container-btn {
