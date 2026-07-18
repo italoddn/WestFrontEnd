@@ -39,9 +39,31 @@ function Historico() {
     return newDate;
   }
 
+  async function clearHistory() {
+    const confirmation = confirm("Deseja realmente limpar o historico!");
+
+    if(!confirmation) return
+
+    try {
+      const response = await api.delete('/history', {
+          headers: {
+            Authorization: `Bearer ${tooken}`
+          }
+        })
+
+      window.location.reload();
+      console.log(response.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
 
   return (
     <section className='historico-container'>
+      <div className='historico-container-button-container'>
+        <button className='historico-container-button-container-btn' onClick={clearHistory}>Limpar historico</button>
+      </div>
       {customers.map((customer, index) => (
         <article className='historico-card' key={customer._id}>
           <div className='historico-cards'>

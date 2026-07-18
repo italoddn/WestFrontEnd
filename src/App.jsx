@@ -43,7 +43,7 @@ function App() {
         <MyRoutes customers= {custumers} setCustumers={setCustumers}/>
       </div>
       <Footer />
-      <ToastContainer />
+      <ToastContainer theme="colored" />
     </>
   );
 }

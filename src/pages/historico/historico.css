@@ -3,6 +3,21 @@
   margin-bottom: 18rem;
 }
 
+.historico-container-button-container {
+  display: flex;
+  justify-content: end;
+}
+
+.historico-container-button-container-btn {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  font-weight: bold;
+  background-color: var(--gray-color);
+  margin-bottom: 2rem;
+  transition: ease .5s all;
+}
+
 .historico-card {
   padding: 0 2.3rem 1rem 2.3rem;
   background-color: var(--tertiary-color);
@@ -12,7 +27,6 @@
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 1rem;
-  
 }
 
 .historico-container-informations {
@@ -92,4 +106,8 @@
 .historico-date span {
   display: flex;
   align-items: end;
+}
+
+.historico-container-button-container-btn:hover {
+  background-color: var(--primary-color);
 }

@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useRef ,useEffect, useState } from "react";
 
 import { FaUserFriends, FaRegClock } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
@@ -14,6 +14,13 @@ function Fila({ customers, setCustumers }) {
   const [, setNow] = useState(new Date());
 
   const [activeMenu, setActiveMenu] = useState(null);
+  const [activeEdit, setActiveEdit] = useState(null);
+  const [idCustumer, setIdCustumer] = useState(null)
+
+  const inputNameRef = useRef();
+  const inputAcenntsRef = useRef();
+  const inputNumberRef = useRef();
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -147,6 +154,71 @@ function Fila({ customers, setCustumers }) {
     }
   }
 
+  function activateEditMenu() {
+  setActiveEdit(prev => !prev);
+
+  setTimeout(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    inputNameRef.current?.focus();
+  }, 0);
+}
+
+  function editCustomer(custumer) {
+    activateEditMenu()
+    inputNameRef.current.value = custumer.name
+    inputAcenntsRef.current.value = custumer.accents
+    inputNumberRef.current.value = custumer.phoneNumber
+    setIdCustumer(custumer._id)
+  }
+
+  async function updateCustumer(e) {
+    e.preventDefault()
+
+    const updateCliente = {
+      name: e.target[0].value,
+      accents: e.target[1].value,
+      phoneNumber: e.target[2].value,
+    }
+
+
+    try {
+      const response = await api.put(`/${idCustumer}`, updateCliente, {
+        headers: {
+          Authorization: `Bearer ${tooken}`,
+        },
+      })
+
+      console.log('oi')
+      console.log(response);
+
+      if(!response) {
+        toast.error('Error ao editar cliente')
+        return
+      }
+
+
+      window.location.reload();
+      
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
+  function handlePhone(e) {
+    let value = e.target.value;
+    value = value.replace(/\D/g, "");
+    value = value.slice(0, 11);
+    value = value.replace(/^(\d{2})(\d)/, "($1) $2");
+    value = value.replace(/(\d{5})(\d)/, "$1-$2");
+
+    e.target.value = value;
+  }
+
   return (
     <section className="fila-container-cards">
       {customers.map((custumer, index) => (
@@ -168,6 +240,15 @@ function Fila({ customers, setCustumers }) {
                   }}
                 >
                   Excluir
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    editCustomer(custumer)
+                  }}
+                >
+                  Editar
                 </button>
               </li>
             </ul>
@@ -207,6 +288,34 @@ function Fila({ customers, setCustumers }) {
           </div>
         </article>
       ))}
+
+      <div className={`fila-edit-container ${activeEdit ? 'active' : ''}`}>
+        <div className='fila-edit'>
+
+          <form onSubmit={updateCustumer} className='fila-edit-inputs-container'>
+            <div className='fila-edit-input-container'>
+              <label htmlFor="custumer-name">Nome</label>
+              <input type="text"  ref={inputNameRef}/>
+            </div>
+
+            <div className='fila-edit-input-container'>
+                <label htmlFor="custumer-name">Quantidade de pessoas</label>
+                <input ref={inputAcenntsRef} type="number" min='1' defaultValue='1' className='edit-input-accents'/>
+            </div>
+
+            <div className='fila-edit-input-container'>
+              <label htmlFor="custumer-name">N° de telefone</label>
+              <input ref={inputNumberRef} onChange={handlePhone} type="text" placeholder='(00) 0000-0000'/>
+            </div>
+
+            <div className='edit-buttons-container'>
+              <button type='submit' className='fila-edit-saveBtn save'>salvar</button>
+              <button type='button' onClick={()=> {setActiveEdit(prev => !prev)}} className='fila-edit-saveBtn cancel'>Cancelar</button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
     </section>
   );
 }
