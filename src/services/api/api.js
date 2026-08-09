@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://westbackend-zkds.onrender.com'
+  baseURL: 'https://westbackend-229w.onrender.com'
 });
 
 export default api;
 
-// 'https://westbackend-zkds.onrender.com'
+// 'https://westbackend-229w.onrender.com'
