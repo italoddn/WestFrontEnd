@@ -65,11 +65,22 @@ function Adicionar({setCustumers}) {
           Authorization: `Bearer ${tooken}`
         }
       })
+
+      const responseConfirmation = await api.post(
+        `/send-mensage-confirmation/${response.data._id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${tooken}`,
+          },
+        },
+      )
       
       e.target[3].classList.remove('loading');
       setLoading(false);
 
       if(response) toast.success('Cliente cadastrado');
+      if(responseConfirmation) toast.success('Mensagem enviada');
 
       e.target[0].value = '';
       e.target[1].value = '1';
