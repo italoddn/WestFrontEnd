@@ -34,13 +34,6 @@ function App() {
     }
 
     getData();
-
-    // Polling: atualiza a cada 5 segundos para refletir confirmações do WhatsApp
-    const interval = setInterval(() => {
-      getData();
-    }, 5000);
-
-    return () => clearInterval(interval);
   }, []);
 
   return (

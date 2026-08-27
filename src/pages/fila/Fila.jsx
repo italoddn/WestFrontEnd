@@ -261,12 +261,7 @@ function Fila({ customers, setCustumers }) {
               </div>
 
               <div className="fila-informations">
-                <h3>
-                  {custumer.name}
-                  {custumer.confirmed && (
-                    <span className="confirmation-icon" title="Confirmado">✓</span>
-                  )}
-                </h3>
+                <h3>{custumer.name}</h3>
                 <p>
                   <span>
                     <FaUserFriends />
