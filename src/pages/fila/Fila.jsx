@@ -212,7 +212,7 @@ function Fila({ customers, setCustumers }) {
       )
 
 
-      window.location.reload();
+      window.location.reload()
       
     } catch (e) {
       console.log(e)
