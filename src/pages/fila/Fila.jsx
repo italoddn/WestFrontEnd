@@ -201,6 +201,16 @@ function Fila({ customers, setCustumers }) {
         return
       }
 
+      await api.post(
+        `/send-mensage-confirmation/${response.data._id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${tooken}`,
+          },
+        },
+      )
+
 
       window.location.reload();
       
