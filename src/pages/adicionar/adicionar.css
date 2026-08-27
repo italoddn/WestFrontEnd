@@ -1,100 +1,218 @@
 .adicionar-container {
-  position: absolute;
-  top: .01rem;
-  left: .01rem;
-  width: 100%;
-  height: 100%;
-  background-color: color-mix(in srgb, var(--tertiary-color) 60%, transparent);
-  z-index: 2;
-  display: flex;
-  align-items: center;
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 30rem);
+    background: transparent;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 0 4rem 0;
+    margin-top: 2rem;
 }
 
 .adicionar-inputs-container {
-  width: 100%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
-  padding: 0 2.5rem;
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.4rem;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(180deg, var(--tertiary-color) 0%, #232323 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .55);
+    border: .1rem solid rgba(255, 92, 0, .18);
+    position: relative;
+    overflow: hidden;
+}
+
+.adicionar-inputs-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: .4rem;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 .adicionar-inputsLabel-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
 }
 
 .adicionar-inputsLabel-container label {
-  color: var(--neutral-color);
-  font-size: 2rem;
+    color: var(--neutral-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: .05rem;
 }
 
 .adicionar-inputContainer {
-  background-color: var(--tertiary-color);
-  border-radius: 1rem;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    background-color: rgba(0, 0, 0, .35);
+    border-radius: 1rem;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: .1rem solid transparent;
+    transition: all .2s ease;
+}
+
+.adicionar-inputContainer:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 .3rem rgba(255, 92, 0, .15);
 }
 
 .adicionar-inputContainer input {
-  border: none;
-  flex: 1;
-  background-color: transparent;
-  font-size: 1.8rem;
-  height: 100%;
-  color: var(--pink-color);
-  font-weight: bold;
+    border: none;
+    flex: 1;
+    background-color: transparent;
+    font-size: 1.6rem;
+    height: 100%;
+    color: var(--neutral-color);
+    font-weight: bold;
+    min-width: 0;
+    width: 100%;
+}
+
+.adicionar-inputContainer input::placeholder {
+    color: var(--gray-color);
+    opacity: .5;
 }
 
 #accents {
-  text-align: center;
+    text-align: center;
 }
 
 .adicionar-inputContainer span {
-  color: var(--pink-color);
-  font-size: 1.8rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
 }
 
-.adicionar-inputs-container button {
-  padding: 1.5rem;
+.adicionar-inputs-container button.default-button {
+    margin-top: .5rem;
+    padding: 1.4rem;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    box-shadow: 0 .5rem 1.5rem rgba(255, 92, 0, .3);
 }
 
 #adicionar-plusLess {
-  font-size: 3rem;
-  padding: .2rem;
+    font-size: 2.6rem;
+    padding: 0 .6rem;
+    cursor: pointer;
+    user-select: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: transform .15s ease;
 }
 
+#adicionar-plusLess:hover {
+    transform: scale(1.15);
+}
+
+#adicionar-plusLess:active {
+    transform: scale(.95);
+}
+
+/* Esconde os spinners/setinhas nativas do input number em todos os navegadores */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 input {
-  border: none;
-  outline: none;
+    border: none;
+    outline: none;
 }
 
 .adicionar-container .default-button.loading {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .loading-icon {
-  animation: spin 1s linear infinite;
-  font-weight: bold;
+    animation: spin 1s linear infinite;
+    font-weight: bold;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   RESPONSIVO (mobile-first)
+   mobile : default
+   tablet : >= 601px (caixa centralizada, com respiro)
+   pc     : >= 901px (caixa maior, layout horizontal em cards)
+   ============================================ */
+
+@media (min-width: 601px) {
+    .adicionar-container {
+        min-height: auto;
+        padding: 3rem 0;
+        background: transparent;
+        margin-top: 3rem;
+        align-items: center;
+    }
+
+    .adicionar-inputs-container {
+        max-width: 480px;
+        padding: 3rem 2.5rem;
+        gap: 2.2rem;
+    }
+
+    .adicionar-inputs-container h2 {
+        font-size: 2.8rem;
+    }
+
+    .adicionar-inputsLabel-container label {
+        font-size: 1.5rem;
+    }
+
+    .adicionar-inputContainer input {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 901px) {
+    .adicionar-container {
+        min-height: auto;
+        padding: 2rem 0 4rem 0;
+        background: transparent;
+    }
+
+    .adicionar-inputs-container {
+        max-width: 640px;
+        padding: 3.5rem 3rem;
+        gap: 2.2rem;
+    }
+
+    .adicionar-inputsLabel-container label {
+        font-size: 1.6rem;
+    }
+
+    .adicionar-inputContainer input {
+        font-size: 1.7rem;
+    }
 }

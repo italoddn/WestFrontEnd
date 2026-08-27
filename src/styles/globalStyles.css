@@ -29,3 +29,16 @@ html {
   color: black;
   cursor: pointer;
 }
+
+/* ============================================
+   BREAKPOINTS DE REFERÊNCIA (apenas doc)
+   mobile : < 601px   (default)
+   tablet : 601px–900px
+   pc     : > 900px
+   ============================================ */
+
+/* helper: limita largura máxima do conteúdo em PC */
+.container-page {
+  width: 100%;
+  margin: 0 auto;
+}

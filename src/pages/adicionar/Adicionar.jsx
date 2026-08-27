@@ -16,11 +16,11 @@ function Adicionar({setCustumers}) {
 
   function handleAccents(e) {
     if (e.target.innerText === '-') {
-      if (inputNumberRef.current.value <= '1') return
-      inputNumberRef.current.value--;
+      if (Number(inputNumberRef.current.value) <= 1) return;
+      inputNumberRef.current.value = Number(inputNumberRef.current.value) - 1;
     }
     if (e.target.innerText === '+') {
-      inputNumberRef.current.value++;
+      inputNumberRef.current.value = Number(inputNumberRef.current.value) + 1;
     }
   }
 

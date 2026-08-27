@@ -61,7 +61,9 @@ function Fila({ customers, setCustumers }) {
           accents,
           phoneNumber,
           stats: "Chamado!",
-          timeInLine: awaitingTime
+          timeInLine: awaitingTime,
+          seated: false,
+          table: null
         },
         {
           headers: {
@@ -126,7 +128,9 @@ function Fila({ customers, setCustumers }) {
           accents,
           phoneNumber,
           stats: "Cancelado!",
-          timeInLine: awatingTime
+          timeInLine: awatingTime,
+          seated: false,
+          table: null
         },
         {
           headers: {
@@ -192,9 +196,6 @@ function Fila({ customers, setCustumers }) {
         },
       })
 
-      console.log('oi')
-      console.log(response);
-
       if(!response) {
         toast.error('Error ao editar cliente')
         return
@@ -217,6 +218,16 @@ function Fila({ customers, setCustumers }) {
     value = value.replace(/(\d{5})(\d)/, "$1-$2");
 
     e.target.value = value;
+  }
+
+  function handleAccents(e) {
+    if (e.target.innerText === '-') {
+      if (Number(inputAcenntsRef.current.value) <= 1) return;
+      inputAcenntsRef.current.value = Number(inputAcenntsRef.current.value) - 1;
+    }
+    if (e.target.innerText === '+') {
+      inputAcenntsRef.current.value = Number(inputAcenntsRef.current.value) + 1;
+    }
   }
 
   return (
@@ -300,7 +311,11 @@ function Fila({ customers, setCustumers }) {
 
             <div className='fila-edit-input-container'>
                 <label htmlFor="custumer-name">Quantidade de pessoas</label>
-                <input ref={inputAcenntsRef} type="number" min='1' defaultValue='1' className='edit-input-accents'/>
+                <div className='fila-edit-inputContainer'>
+                  <span onClick={handleAccents} className='fila-edit-plusLess'>-</span>
+                  <input ref={inputAcenntsRef} type="number" min='1' defaultValue='1' className='edit-input-accents'/>
+                  <span onClick={handleAccents} className='fila-edit-plusLess'>+</span>
+                </div>
             </div>
 
             <div className='fila-edit-input-container'>

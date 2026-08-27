@@ -1,3 +1,26 @@
 .container {
     margin: 0 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tablet: container centralizado, com max-width */
+@media (min-width: 601px) {
+    .container {
+        margin: 0 4rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* PC: container centralizado em relação à viewport.
+   A sidebar (footer) é fixa à esquerda (largura 20rem), por isso
+   o conteúdo principal ganha padding-left para não ficar embaixo dela. */
+@media (min-width: 901px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 6rem 0 26rem; /* 6rem direita + 20rem sidebar + 6rem gap */
+    }
 }
