@@ -66,7 +66,7 @@ function Adicionar({setCustumers}) {
         }
       })
 
-      const responseConfirmation = await api.post(
+      await api.post(
         `/send-mensage-confirmation/${response.data._id}`,
         {},
         {
@@ -80,7 +80,6 @@ function Adicionar({setCustumers}) {
       setLoading(false);
 
       if(response) toast.success('Cliente cadastrado');
-      if(responseConfirmation) toast.success('Mensagem enviada');
 
       e.target[0].value = '';
       e.target[1].value = '1';
